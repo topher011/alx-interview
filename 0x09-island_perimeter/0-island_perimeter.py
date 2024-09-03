@@ -1,35 +1,21 @@
 #!/usr/bin/python3
-'''
-finds the perimeter of a of an island represented by a grid
-'''
+"""
+0-island_perimeter
+"""
 
 
 def island_perimeter(grid):
-    '''
-    Returns the perimeter of the island described in grid
-    '''
-    result = 0
-    for i in range(len(grid)):
-        for j in range(len(grid[i])):
-            if grid[i][j] == 1:
-                result += check_surrounding(i, j, grid)
-    return result
-
-
-def check_surrounding(i, j, grid):
-    '''
-    Checks all surrounding cells for perimeter
-    '''
-    height = len(grid) - 1
-    width = len(grid[0]) - 1
+    """ Returns perimeter of an island description in grid """
     perimeter = 0
+    m = len(grid)
+    n = len(grid[0])
 
-    if i == 0 or not grid[i-1][j]:
-        perimeter += 1
-    if j == 0 or not grid[i][j-1]:
-        perimeter += 1
-    if i == height or not grid[i+1][j]:
-        perimeter += 1
-    if j == width or not grid[i][j+1]:
-        perimeter += 1
+    for i in range(m):
+        for j in range(n):
+            if grid[i][j] == 1:
+                for x, y in [(0, 1), (1, 0), (-1, 0), (0, -1)]:
+                    a, b = i + x, j + y
+                    # print(a, b)
+                    if a >= m or b >= n or a < 0 or b < 0 or grid[a][b] == 0:
+                        perimeter += 1
     return perimeter

@@ -1,23 +1,16 @@
 #!/usr/bin/python3
-'''
-Rotates a 2d matrix clockwise
-'''
-
-
-def transpose(matrix):
-    '''transposes a matrix
-    '''
-    matrix_size = len(matrix)
-    for i in range(matrix_size):
-        begin_switch = False
-        for j in range(matrix_size):
-            if j > i:
-                matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+""" Rotate 2D Matrix """
 
 
 def rotate_2d_matrix(matrix):
-    ''' rotate it 90 degrees clockwise.
-    '''
-    transpose(matrix)
+    """ Given `n` x `n` 2D Matrix
+    Rotate it 90 degrees clockwise
+    """
+    # Replica Matrix
+    replica = matrix[:]
+
     for i in range(len(matrix)):
-        matrix[i] = matrix[i][::-1]
+        # retract column from replica
+        column = [row[i] for row in replica]
+        # Replace in matrix in reverse order
+        matrix[i] = column[::-1]

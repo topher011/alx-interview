@@ -1,11 +1,11 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 Main file for testing
 """
 
 minOperations = __import__('0-minoperations').minOperations
 
-n = 120.3
+n = 4
 print("Min # of operations to reach {} char: {}".format(n, minOperations(n)))
 
 n = 12
